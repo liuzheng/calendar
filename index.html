@@ -19,6 +19,7 @@
         }
 
         .cal-left {
+            border: 1px solid #323232;
             background-color: #323232;
             border-radius: 5px 0 0 5px;
             width: 300px;
@@ -153,9 +154,11 @@
             margin-top: 5px;
             margin-bottom: 5px;
         }
+
         .cal-left div.holidays .holiday div {
             margin-top: 7px;
         }
+
         .cal-left div.holidays .holiday-name {
             border-radius: 3px;
             background-color: lawngreen;
@@ -166,8 +169,157 @@
         .cal-left div.holidays .holiday-time {
             float: right;
         }
-    </style>
 
+        .cal-right {
+            background-color: white;
+            border-radius: 0 5px 5px 0;
+            border: 1px solid #323232;
+            width: 682px;
+            top: 34px;
+            height: 600px;
+            left: 340px;
+            position: absolute;
+            text-align: center;
+
+        }
+
+        .cal-right .topbar {
+            margin: 10px;
+            float: left;
+            font-size: 10pt;
+        }
+
+        .gray-background {
+            border-radius: 3px;
+            height: 20px;
+            background-color: #ebebeb;
+            padding: 3px;
+            padding-left: 7px;
+            padding-right: 7px;
+            max-height: 22px;
+        }
+
+        .cal-right .topbar .today {
+            margin: 5px;
+            position: relative;
+            float: left;
+        }
+
+        .cal-right .topbar .DWMY {
+            position: relative;
+            margin: 5px;
+            float: left;
+            left: 50px;
+        }
+
+        .cal-right .topbar .DWMY .DAY {
+            border-radius: 3px 0 0 3px;
+            background-color: #ebebeb;
+            padding: 3px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .cal-right .topbar .DWMY .WEEK {
+            background-color: #ebebeb;
+            padding: 3px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .cal-right .topbar .DWMY .MONTH {
+            background-color: #ebebeb;
+            padding: 3px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .cal-right .topbar .DWMY .YEAR {
+            border-radius: 0 3px 3px 0;
+            background-color: #ebebeb;
+            padding: 3px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .cal-right .topbar .DWMY .selected {
+            background-color: #e93e37;
+        }
+
+        .cal-right .topbar .search-bar {
+            border-radius: 3px;
+            background-color: #ebebeb;
+            padding: 3px;
+            left: 60px;
+            position: relative;
+            border: none;
+        }
+
+        .cal-right .week-name {
+            width: 100%;
+            margin-top: 64px;
+        }
+
+        .cal-right .week-name div {
+            width: 88px;
+            height: 100%;
+            position: relative;
+            float: left;
+            text-align: right;
+            color: #7f7f7f;
+            padding-right: 7px;
+        }
+
+        .cal-right .dayday div div {
+            left: 3px;
+            width: 74px;
+            height: 64px;
+            border-top: 2px solid #ebebeb;
+            border-right:  2px solid #ebebeb;
+            position: relative;
+            float: left;
+            text-align: right;
+            padding: 10px;
+        }
+        .cal-right .dayday div div:first-child{
+            background-color: #f7f7f7
+        }
+        .cal-right .dayday div div:last-child{
+            background-color: #f7f7f7
+        }
+        .cal-right .dayday .today {
+            background-color: #468dfe;
+            border-radius: 15px;
+            content: "";
+            position: relative;
+            padding: 7px;
+            right: -7px;
+        }
+
+        .cal-right .dayday .holiday{
+            border: none;
+            left: -10px;
+            top: -6px;
+            overflow-y: scroll;
+            width: 100%;
+            height: 55px;
+            padding-bottom: 0;
+            padding-top: 0;
+            margin-top: 10px;
+
+        }
+        .cal-right .dayday .holiday span{
+            background-color: #d2efc6;
+            width: 80px;
+            margin: 2px;
+            position: relative;
+            float: left;
+            font-size: 10pt;
+            padding-left: 6px;
+            text-align: left;
+            left: -7px;
+        }
+    </style>
 </head>
 <body>
 <!--<img src="Snip20160126_7.png"/>-->
@@ -188,7 +340,7 @@
                 <div>SUN</div>
                 <div>MON</div>
                 <div>TUO</div>
-                <div>WEN</div>
+                <div>WED</div>
                 <div>THU</div>
                 <div>FRI</div>
                 <div>SAT</div>
@@ -336,7 +488,96 @@
         </div>
     </div>
     <div class="cal-right">
-
+        <div class="topbar">
+            <div class="today">
+                <span class="gray-background"><</span>
+                <span class="gray-background">Today</span>
+                <span class="gray-background">></span>
+            </div>
+            <div class="DWMY">
+                <span class="DAY">Day</span>
+                <span class="WEEK">Week</span>
+                <span class="MONTH selected">Month</span>
+                <span class="YEAR">Year</span>
+            </div>
+            <input class="search-bar" placeholder=" Search"/>
+        </div>
+        <div class="">
+            <div class="week-name">
+                <div>SUN</div>
+                <div>MON</div>
+                <div>TUO</div>
+                <div>WED</div>
+                <div>THU</div>
+                <div>FRI</div>
+                <div>SAT</div>
+            </div>
+            <div class="dayday">
+                <div>
+                    <div><span>27</span></div>
+                    <div><span>28</span></div>
+                    <div><span>29</span></div>
+                    <div><span>30</span></div>
+                    <div><span>31</span></div>
+                    <div>
+                        <span>Jan 1</span>
+                        <div class="holiday">
+                        <span >元旦</span>
+                        <span >元旦</span>
+                        <span >元旦</span>
+                        <span >元旦</span>
+                        <span >元旦</span>
+                        </div>
+                    </div>
+                    <div class=""><span>2</span></div>
+                </div>
+                <div>
+                    <div class=""><span>3</span></div>
+                    <div class=""><span>4</span></div>
+                    <div class=""><span>5</span></div>
+                    <div class=""><span>6</span></div>
+                    <div class=""><span>7</span></div>
+                    <div class=""><span>8</span></div>
+                    <div class=""><span>9</span></div>
+                </div>
+                <div class="">
+                    <div class=""><span>10</span></div>
+                    <div class=" "><span>11</span></div>
+                    <div class=""><span>12</span></div>
+                    <div class=""><span>13</span></div>
+                    <div class="  "><span>14</span></div>
+                    <div class=""><span>15</span></div>
+                    <div class=" "><span>16</span></div>
+                </div>
+                <div>
+                    <div class=""><span>17</span></div>
+                    <div class=""><span>18</span></div>
+                    <div class=""><span>19</span></div>
+                    <div class=""><span>20</span></div>
+                    <div class=""><span>21</span></div>
+                    <div class=""><span>22</span></div>
+                    <div class=""><span>23</span></div>
+                </div>
+                <div>
+                    <div class=""><span>24</span></div>
+                    <div class=""><span>25</span></div>
+                    <div class=""><span>26</span></div>
+                    <div><span class="today">27</span></div>
+                    <div class=""><span>28</span></div>
+                    <div class=""><span>29</span></div>
+                    <div class=""><span>30</span></div>
+                </div>
+                <div>
+                    <div class=""><span>31</span></div>
+                    <div class=""><span>Feb 1</span></div>
+                    <div class=""><span>2</span></div>
+                    <div class=""><span>3</span></div>
+                    <div class=""><span>4</span></div>
+                    <div class=""><span>5</span></div>
+                    <div class=""><span>6</span></div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
