@@ -14,7 +14,7 @@
             width: 100%;
             height: 100%;
             position: fixed;
-            background-image: url("imgs/Snip20160126_7.png");
+            background-image: url("imgs/Snip20160127_17.png");
             background-repeat: no-repeat;
         }
 
@@ -89,18 +89,82 @@
         .date div.selected {
             background-color: #4d4d4d;
             border-radius: 20px;
+            position: relative;
+            z-index: 10;
         }
 
         .day-selected:before {
-            z-index: 5;
+            z-index: -1;
             height: 30px;
             width: 30px;
-            background-color: #468dfe;
+            background-color: #7f7f7f;
             border-radius: 35px;
             content: "";
             position: absolute;
             margin-left: -8px;
             margin-top: -10px;
+        }
+
+        .date div div.this-month.today.day-selected:before {
+            background-color: #468dfe;
+        }
+
+        .date div div.holiday:after {
+            height: 4px;
+            width: 4px;
+            background-color: #64c838;
+            border-radius: 4px;
+            content: "";
+            position: absolute;
+            margin-left: -6px;
+            margin-top: 12px;
+        }
+
+        .date div div.this-month.today.day-selected {
+            color: white;
+        }
+
+        .date div div.this-month.today {
+            color: #468dfe;
+        }
+
+        .cal-left div.TODAY {
+            width: 280px;
+            margin: 10px;
+            font-size: 9pt;
+            color: #3f7ccd;
+        }
+
+        .cal-left div.holidays {
+            width: 280px;
+            height: 270px;
+            margin: 10px;
+
+            font-size: 9pt;
+            color: #7f7f7f;
+            overflow-y: scroll;
+        }
+
+        .cal-left div.holidays .holiday {
+            margin: 5px;
+        }
+
+        .cal-left div.holidays .holiday span {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .cal-left div.holidays .holiday div {
+            margin-top: 7px;
+        }
+        .cal-left div.holidays .holiday-name {
+            border-radius: 3px;
+            background-color: lawngreen;
+            padding: 5px;
+            color: white;
+        }
+
+        .cal-left div.holidays .holiday-time {
+            float: right;
         }
     </style>
 
@@ -135,7 +199,7 @@
                 <div>29</div>
                 <div>30</div>
                 <div>31</div>
-                <div class="this-month">1</div>
+                <div class="this-month holiday">1</div>
                 <div class="this-month">2</div>
             </div>
             <div>
@@ -152,9 +216,9 @@
                 <div class="this-month day-selected">11</div>
                 <div class="this-month">12</div>
                 <div class="this-month">13</div>
-                <div class="this-month">14</div>
+                <div class="this-month today day-selected">14</div>
                 <div class="this-month">15</div>
-                <div class="this-month">16</div>
+                <div class="this-month today">16</div>
             </div>
             <div>
                 <div class="this-month">17</div>
@@ -182,6 +246,92 @@
                 <div class="">4</div>
                 <div class="">5</div>
                 <div class="">6</div>
+            </div>
+        </div>
+        <div class="TODAY" style="">
+            <span>TODAY 1/27/2016</span>
+            <span style="float: right">No Event</span>
+        </div>
+        <div class="holidays">
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
+            </div>
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
+            </div>
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
+            </div>
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
+            </div>
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
+            </div>
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
+            </div>
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
+            </div>
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
+            </div>
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
+            </div>
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
             </div>
         </div>
     </div>
