@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" href="css/font-awesome.min.css"/>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .calendar {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background-image: url("imgs/Snip20160126_7.png");
+            background-repeat: no-repeat;
+        }
+
+        .cal-left {
+            background-color: #323232;
+            border-radius: 5px 0 0 5px;
+            width: 300px;
+            top: 34px;
+            height: 600px;
+            left: 42px;
+            position: absolute;
+        }
+
+        .cal-left .create-event {
+            border-radius: 3px;
+            border: none;
+            margin: 10px;
+            height: 20px;
+            width: 90%;
+        }
+
+        .cal-left .month-year {
+            margin: 15px;
+            margin-bottom: 0;
+        }
+
+        .cal-left .month-year .this-month {
+            color: white;
+            font-size: 19pt;
+        }
+
+        .cal-left .month-year .this-year {
+            color: red;
+            font-size: 20pt;
+        }
+
+        .cal-left .month-year .angle {
+            color: #797979;
+            float: right;
+            font-size: 18pt;
+        }
+
+        .cal-left .month-year .angle i {
+            margin: 8px;
+            margin-top: 0;
+        }
+
+        .date {
+            width: 280px;
+            margin: 10px;
+            margin-top: 0;
+            text-align: center;
+            font-size: 9pt;
+        }
+
+        .date div {
+            float: left;
+            padding-top: 4px;
+            padding-bottom: 2px;
+        }
+
+        .date div div {
+            width: 40px;
+            height: 14px;
+            color: #797979;
+        }
+
+        .date div div.this-month {
+            color: white;
+        }
+
+        .date div.selected {
+            background-color: #4d4d4d;
+            border-radius: 20px;
+        }
+
+        .day-selected:before {
+            z-index: 5;
+            height: 30px;
+            width: 30px;
+            background-color: #468dfe;
+            border-radius: 35px;
+            content: "";
+            position: absolute;
+            margin-left: -8px;
+            margin-top: -10px;
+        }
+    </style>
+
+</head>
+<body>
+<!--<img src="Snip20160126_7.png"/>-->
+<div class="calendar">
+    <div class="cal-left">
+        <input type="text" class="create-event"/>
+
+        <div class="month-year">
+            <span class="this-month">January</span>
+            <span class="this-year">2016</span>
+            <span class="angle">
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-right"></i>
+            </span>
+        </div>
+        <div class="date">
+            <div>
+                <div>SUN</div>
+                <div>MON</div>
+                <div>TUO</div>
+                <div>WEN</div>
+                <div>THU</div>
+                <div>FRI</div>
+                <div>SAT</div>
+            </div>
+            <div>
+                <div>27</div>
+                <div>28</div>
+                <div>29</div>
+                <div>30</div>
+                <div>31</div>
+                <div class="this-month">1</div>
+                <div class="this-month">2</div>
+            </div>
+            <div>
+                <div class="this-month">3</div>
+                <div class="this-month">4</div>
+                <div class="this-month">5</div>
+                <div class="this-month">6</div>
+                <div class="this-month">7</div>
+                <div class="this-month">8</div>
+                <div class="this-month">9</div>
+            </div>
+            <div class="selected">
+                <div class="this-month">10</div>
+                <div class="this-month day-selected">11</div>
+                <div class="this-month">12</div>
+                <div class="this-month">13</div>
+                <div class="this-month">14</div>
+                <div class="this-month">15</div>
+                <div class="this-month">16</div>
+            </div>
+            <div>
+                <div class="this-month">17</div>
+                <div class="this-month">18</div>
+                <div class="this-month">19</div>
+                <div class="this-month">20</div>
+                <div class="this-month">21</div>
+                <div class="this-month">22</div>
+                <div class="this-month">23</div>
+            </div>
+            <div>
+                <div class="this-month">24</div>
+                <div class="this-month">25</div>
+                <div class="this-month">26</div>
+                <div class="this-month">27</div>
+                <div class="this-month">28</div>
+                <div class="this-month">29</div>
+                <div class="this-month">30</div>
+            </div>
+            <div>
+                <div class="this-month">31</div>
+                <div class="">1</div>
+                <div class="">2</div>
+                <div class="">3</div>
+                <div class="">4</div>
+                <div class="">5</div>
+                <div class="">6</div>
+            </div>
+        </div>
+    </div>
+    <div class="cal-right">
+
+    </div>
+
+</div>
+
+</body>
+</html>
