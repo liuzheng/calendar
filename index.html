@@ -94,6 +94,10 @@
             z-index: 10;
         }
 
+        .day-selected {
+            color: white !important
+        }
+
         .day-selected:before {
             z-index: -1;
             height: 30px;
@@ -117,7 +121,7 @@
             border-radius: 4px;
             content: "";
             position: absolute;
-            margin-left: -6px;
+            margin-left: -9px;
             margin-top: 12px;
         }
 
@@ -347,60 +351,6 @@
                 <div>FRI</div>
                 <div>SAT</div>
             </div>
-            <div>
-                <div>27</div>
-                <div>28</div>
-                <div>29</div>
-                <div>30</div>
-                <div>31</div>
-                <div class="this-month holiday">1</div>
-                <div class="this-month">2</div>
-            </div>
-            <div>
-                <div class="this-month">3</div>
-                <div class="this-month">4</div>
-                <div class="this-month">5</div>
-                <div class="this-month">6</div>
-                <div class="this-month">7</div>
-                <div class="this-month">8</div>
-                <div class="this-month">9</div>
-            </div>
-            <div class="selected">
-                <div class="this-month">10</div>
-                <div class="this-month day-selected">11</div>
-                <div class="this-month">12</div>
-                <div class="this-month">13</div>
-                <div class="this-month today day-selected">14</div>
-                <div class="this-month">15</div>
-                <div class="this-month today">16</div>
-            </div>
-            <div>
-                <div class="this-month">17</div>
-                <div class="this-month">18</div>
-                <div class="this-month">19</div>
-                <div class="this-month">20</div>
-                <div class="this-month">21</div>
-                <div class="this-month">22</div>
-                <div class="this-month">23</div>
-            </div>
-            <div>
-                <div class="this-month">24</div>
-                <div class="this-month">25</div>
-                <div class="this-month">26</div>
-                <div class="this-month">27</div>
-                <div class="this-month">28</div>
-                <div class="this-month">29</div>
-                <div class="this-month">30</div>
-            </div>
-            <div>
-                <div class="this-month">31</div>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div>6</div>
-            </div>
         </div>
         <div class="holidays">
             <div class="holiday TODAY">
@@ -529,26 +479,55 @@
         var f = todayNumber - firstMonthDay.getDay() * 86400000;
 //        var firstSunDay = new Date(f);
         var dayday = document.getElementsByClassName('dayday')[0];
+        var daydate = document.getElementsByClassName('date')[0];
+
         var count = f - 86400000;
         for (var i = 0; i <= 5; i++) {
             var div = document.createElement('div');
+            var div1 = document.createElement('div');
             for (var j = 0; j < 7; j++) {
                 count = count + 86400000;
                 var dd = new Date(count);
                 var divDay = document.createElement('div');
                 divDay.id = dd.getFullYear() + dd.toString().split(' ')[1] + dd.getDate();
+                var divDay1 = document.createElement('div');
+                divDay1.id = dd.getDate() + dd.toString().split(' ')[1] + dd.getFullYear();
+                divDay1.onclick = function () {
+                    jQuery('.selected').removeClass('selected');
+                    jQuery('.day-selected').removeClass('day-selected');
+                    jQuery(this).addClass('day-selected');
+                    jQuery(this.parentNode).addClass('selected');
+                };
+
                 var span = document.createElement('span');
+                var span1 = document.createElement('span');
                 if (dd.getDate() == '1') {
                     span.innerHTML = dd.toString().split(' ')[1] + ' ' + dd.getDate();
                 } else {
                     span.innerHTML = dd.getDate();
                 }
+                if (dd.getMonth() == today.getMonth()) {
+                    divDay1.className = 'this-month'
+                }
+                if (dd.toISOString().slice(0, 10) == today.toISOString().slice(0, 10)) {
+                    divDay1.className = 'this-month today day-selected';
+                    div1.className = 'selected'
+
+                }
+                if (dd.getDate() < 10) {
+                    span1.style.padding = '4px'
+                }
+                span1.innerHTML = dd.getDate();
+                divDay1.appendChild(span1);
                 divDay.appendChild(span);
                 div.appendChild(divDay);
+                div1.appendChild(divDay1);
             }
-            dayday.appendChild(div)
+            dayday.appendChild(div);
+            daydate.appendChild(div1)
         }
-        $('#'+today.getFullYear() + today.toString().split(' ')[1] + today.getDate()+' span').addClass('today')
+        $('#' + today.getFullYear() + today.toString().split(' ')[1] + today.getDate() + ' span').addClass('today');
+
     })
 </script>
 </body>
