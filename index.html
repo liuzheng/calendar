@@ -526,6 +526,9 @@
             dayday.appendChild(div);
             daydate.appendChild(div1)
         }
+        var divEmpty = document.createElement('div');
+        divEmpty.style.width = '100%';//this is chrome bug
+        daydate.appendChild(divEmpty);
         $('#' + today.getFullYear() + today.toString().split(' ')[1] + today.getDate() + ' span').addClass('today');
 
     })
