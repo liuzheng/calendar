@@ -321,6 +321,7 @@
             left: -7px;
         }
     </style>
+    <script src="js/jquery-2.2.0.min.js"></script>
 </head>
 <body>
 <!--<img src="Snip20160126_7.png"/>-->
@@ -340,7 +341,7 @@
             <div>
                 <div>SUN</div>
                 <div>MON</div>
-                <div>TUO</div>
+                <div>TUE</div>
                 <div>WED</div>
                 <div>THU</div>
                 <div>FRI</div>
@@ -393,12 +394,12 @@
             </div>
             <div>
                 <div class="this-month">31</div>
-                <div class="">1</div>
-                <div class="">2</div>
-                <div class="">3</div>
-                <div class="">4</div>
-                <div class="">5</div>
-                <div class="">6</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
             </div>
         </div>
         <div class="holidays">
@@ -503,86 +504,52 @@
             </div>
             <input class="search-bar" placeholder=" Search"/>
         </div>
-        <div class="">
+        <div>
             <div class="week-name">
                 <div>SUN</div>
                 <div>MON</div>
-                <div>TUO</div>
+                <div>TUE</div>
                 <div>WED</div>
                 <div>THU</div>
                 <div>FRI</div>
                 <div>SAT</div>
             </div>
             <div class="dayday">
-                <div>
-                    <div><span>27</span></div>
-                    <div><span>28</span></div>
-                    <div><span>29</span></div>
-                    <div><span>30</span></div>
-                    <div><span>31</span></div>
-                    <div>
-                        <span>Jan 1</span>
-
-                        <div class="holiday">
-                            <span>元旦</span>
-                            <span>元旦</span>
-                            <span>元旦</span>
-                            <span>元旦</span>
-                            <span>元旦</span>
-                        </div>
-                    </div>
-                    <div class=""><span>2</span></div>
-                </div>
-                <div>
-                    <div class=""><span>3</span></div>
-                    <div class=""><span>4</span></div>
-                    <div class=""><span>5</span></div>
-                    <div class=""><span>6</span></div>
-                    <div class=""><span>7</span></div>
-                    <div class=""><span>8</span></div>
-                    <div class=""><span>9</span></div>
-                </div>
-                <div class="">
-                    <div class=""><span>10</span></div>
-                    <div class=" "><span>11</span></div>
-                    <div class=""><span>12</span></div>
-                    <div class=""><span>13</span></div>
-                    <div class="  "><span>14</span></div>
-                    <div class=""><span>15</span></div>
-                    <div class=" "><span>16</span></div>
-                </div>
-                <div>
-                    <div class=""><span>17</span></div>
-                    <div class=""><span>18</span></div>
-                    <div class=""><span>19</span></div>
-                    <div class=""><span>20</span></div>
-                    <div class=""><span>21</span></div>
-                    <div class=""><span>22</span></div>
-                    <div class=""><span>23</span></div>
-                </div>
-                <div>
-                    <div class=""><span>24</span></div>
-                    <div class=""><span>25</span></div>
-                    <div class=""><span>26</span></div>
-                    <div><span class="today">27</span></div>
-                    <div class=""><span>28</span></div>
-                    <div class=""><span>29</span></div>
-                    <div class=""><span>30</span></div>
-                </div>
-                <div>
-                    <div class=""><span>31</span></div>
-                    <div class=""><span>Feb 1</span></div>
-                    <div class=""><span>2</span></div>
-                    <div class=""><span>3</span></div>
-                    <div class=""><span>4</span></div>
-                    <div class=""><span>5</span></div>
-                    <div class=""><span>6</span></div>
-                </div>
             </div>
         </div>
     </div>
 
 </div>
-
+<script>
+    $(document).ready(function () {
+        var today = new Date();
+        var todayString = today.getFullYear() + '/' + eval(today.getMonth() + '+1').toString() + '/1';
+        var todayNumber = Date.parse(todayString);
+        var firstMonthDay = new Date(todayNumber);
+        var f = todayNumber - firstMonthDay.getDay() * 86400000;
+//        var firstSunDay = new Date(f);
+        var dayday = document.getElementsByClassName('dayday')[0];
+        var count = f - 86400000;
+        for (var i = 0; i <= 5; i++) {
+            var div = document.createElement('div');
+            for (var j = 0; j < 7; j++) {
+                count = count + 86400000;
+                var dd = new Date(count);
+                var divDay = document.createElement('div');
+                divDay.id = dd.getFullYear() + dd.toString().split(' ')[1] + dd.getDate();
+                var span = document.createElement('span');
+                if (dd.getDate() == '1') {
+                    span.innerHTML = dd.toString().split(' ')[1] + ' ' + dd.getDate();
+                } else {
+                    span.innerHTML = dd.getDate();
+                }
+                divDay.appendChild(span);
+                div.appendChild(divDay);
+            }
+            dayday.appendChild(div)
+        }
+        $('#'+today.getFullYear() + today.toString().split(' ')[1] + today.getDate()+' span').addClass('today')
+    })
+</script>
 </body>
 </html>
