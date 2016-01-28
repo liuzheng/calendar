@@ -130,9 +130,6 @@
         }
 
         .cal-left div.TODAY {
-            width: 280px;
-            margin: 10px;
-            font-size: 9pt;
             color: #3f7ccd;
         }
 
@@ -275,18 +272,21 @@
             width: 74px;
             height: 64px;
             border-top: 2px solid #ebebeb;
-            border-right:  2px solid #ebebeb;
+            border-right: 2px solid #ebebeb;
             position: relative;
             float: left;
             text-align: right;
             padding: 10px;
         }
-        .cal-right .dayday div div:first-child{
+
+        .cal-right .dayday div div:first-child {
             background-color: #f7f7f7
         }
-        .cal-right .dayday div div:last-child{
+
+        .cal-right .dayday div div:last-child {
             background-color: #f7f7f7
         }
+
         .cal-right .dayday .today {
             background-color: #468dfe;
             border-radius: 15px;
@@ -296,7 +296,7 @@
             right: -7px;
         }
 
-        .cal-right .dayday .holiday{
+        .cal-right .dayday .holiday {
             border: none;
             left: -10px;
             top: -6px;
@@ -308,7 +308,8 @@
             margin-top: 10px;
 
         }
-        .cal-right .dayday .holiday span{
+
+        .cal-right .dayday .holiday span {
             background-color: #d2efc6;
             width: 80px;
             margin: 2px;
@@ -400,11 +401,11 @@
                 <div class="">6</div>
             </div>
         </div>
-        <div class="TODAY" style="">
-            <span>TODAY 1/27/2016</span>
-            <span style="float: right">No Event</span>
-        </div>
         <div class="holidays">
+            <div class="holiday TODAY">
+                <span>TODAY 1/27/2016</span>
+                <span class="holiday-time">No Event</span>
+            </div>
             <div class="holiday">
                 <span>SUNDAY 2/7/2016</span>
 
@@ -521,12 +522,13 @@
                     <div><span>31</span></div>
                     <div>
                         <span>Jan 1</span>
+
                         <div class="holiday">
-                        <span >元旦</span>
-                        <span >元旦</span>
-                        <span >元旦</span>
-                        <span >元旦</span>
-                        <span >元旦</span>
+                            <span>元旦</span>
+                            <span>元旦</span>
+                            <span>元旦</span>
+                            <span>元旦</span>
+                            <span>元旦</span>
                         </div>
                     </div>
                     <div class=""><span>2</span></div>
