@@ -139,11 +139,13 @@
 
         .cal-left div.holidays {
             width: 280px;
-            height: 310px;
             margin: 10px;
             font-size: 9pt;
             color: #7f7f7f;
             overflow-y: scroll;
+            top: 250px;
+            bottom: 30px;
+            position: absolute;
         }
 
         .cal-left div.holidays .holiday {
@@ -506,6 +508,13 @@
                         $('.day-selected').removeClass('day-selected');
                         $(this).addClass('day-selected');
                         $(this.parentNode).addClass('selected');
+                    };
+                    divDay.onclick = function () {
+                        $('.selected').removeClass('selected');
+                        $('.day-selected').removeClass('day-selected');
+                        var day = $('#' + this.id.slice(7) + this.id.slice(4, 7) + this.id.slice(0, 4));
+                        day.addClass('day-selected');
+                        day.parent().addClass('selected');
                     };
 
                     var span = document.createElement('span');
