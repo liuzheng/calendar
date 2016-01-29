@@ -14,8 +14,8 @@
             width: 100%;
             height: 100%;
             position: fixed;
-            background-image: url("imgs/Snip20160127_17.png");
-            background-repeat: no-repeat;
+            /*background-image: url("imgs/Snip20160127_17.png");*/
+            /*background-repeat: no-repeat;*/
         }
 
         .cal-left {
@@ -143,7 +143,7 @@
             font-size: 9pt;
             color: #7f7f7f;
             overflow-y: scroll;
-            top: 250px;
+            top: 268px;
             bottom: 30px;
             position: absolute;
         }
@@ -445,7 +445,7 @@
         <div class="topbar">
             <div class="today">
                 <span class="gray-background past-month"><</span>
-                <span class="gray-background">Today</span>
+                <span class="gray-background Today">Today</span>
                 <span class="gray-background next-month">></span>
             </div>
             <div class="DWMY">
@@ -489,7 +489,7 @@
             var thisYear = $('.month-year .this-year')[0];
 
             calBig.innerHTML = '';
-            calSmall.innerHTML = '';
+            calSmall.innerHTML = '<div><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>';
             thisMonth.innerHTML = today.toString().split(' ')[1];
             thisYear.innerHTML = today.getFullYear();
             var count = f - 86400000;
@@ -528,7 +528,7 @@
                         divDay1.className = 'this-month'
                     }
                     if (day.getDate() < 10) {
-                        span1.style.padding = '4px'
+                        span1.style.padding = '3px'
                     }
                     span1.innerHTML = day.getDate();
                     divDay1.appendChild(span1);
@@ -539,9 +539,9 @@
                 calBig.appendChild(calBigdiv);
                 calSmall.appendChild(calSmalldiv)
             }
-            var divEmpty = document.createElement('div');
-            divEmpty.style.width = '100%';//this is chrome bug
-            calSmall.appendChild(divEmpty);
+//            var divEmpty = document.createElement('div');
+//            divEmpty.style.width = '100%';//this is chrome bug
+//            calSmall.appendChild(divEmpty);
 
             var todaySelect = $('#' + today.getDate() + today.toString().split(' ')[1] + today.getFullYear());
             todaySelect.addClass('day-selected');
@@ -566,7 +566,13 @@
                 now = new Date(Date.parse(now.getFullYear() + '/' + now.getMonth() + '/1'))
             }
             drawCalendar(now);
-        })
+        });
+        $('.cal-right .topbar .today .Today').click(function () {
+            now = new Date();
+            drawCalendar(now);
+        });
+//        http://www.google.com/calendar/ical/zh_cn.china#holiday@group.v.calendar.google.com/public/basic.ics
+
     })
 </script>
 </body>
