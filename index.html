@@ -475,8 +475,27 @@
 <script>
     $(document).ready(function () {
         var now = new Date();
-        drawCalendar(now);
-
+        var month = {
+            '01': 'Jan',
+            '02': 'Feb',
+            '03': 'Mar',
+            '04': 'Apr',
+            '05': 'May',
+            '06': 'Jun',
+            '07': 'Jul',
+            '08': 'Aug',
+            '09': 'Sep',
+            '10': 'Oct',
+            '11': 'Nov',
+            '12': 'Dec'
+        };
+        var Holidays;
+        $.get('./holidays', function (e) {
+//        http://www.google.com/calendar/ical/zh_cn.china#holiday@group.v.calendar.google.com/public/basic.ics
+// make json shell :cat basic.ics | awk  -F: '{if($1=="SUMMARY") print "\""$2 ;else if($1=="DTSTART;VALUE=DATE") printf "\n\"%d\":",$2}'|sort -u|sed -e 's/\r/",/g'|awk '{if(NR==1) print "{"$0;else print $0}' > holidays && echo '"":""}' >> holidays
+            Holidays = JSON.parse(e);
+            drawCalendar(now);
+        });
         function drawCalendar(today) {
             var todayString = today.getFullYear() + '/' + eval(today.getMonth() + '+1').toString() + '/1';
             var todayNumber = Date.parse(todayString);
@@ -537,12 +556,18 @@
                     calBigdiv.appendChild(divDay);
                 }
                 calBig.appendChild(calBigdiv);
-                calSmall.appendChild(calSmalldiv)
+                calSmall.appendChild(calSmalldiv);
+
             }
 //            var divEmpty = document.createElement('div');
 //            divEmpty.style.width = '100%';//this is chrome bug
 //            calSmall.appendChild(divEmpty);
 
+            for (var i in Holidays) {
+                if (i.slice(0, 4) == today.getFullYear().toString()) {
+                    $("#" +  eval(i.slice(6)).toString() + month[i.slice(4, 6)] + i.slice(0, 4)).addClass('holiday')
+                }
+            }
             var todaySelect = $('#' + today.getDate() + today.toString().split(' ')[1] + today.getFullYear());
             todaySelect.addClass('day-selected');
             todaySelect.parent().addClass('selected');
@@ -571,7 +596,6 @@
             now = new Date();
             drawCalendar(now);
         });
-//        http://www.google.com/calendar/ical/zh_cn.china#holiday@group.v.calendar.google.com/public/basic.ics
 
     })
 </script>
