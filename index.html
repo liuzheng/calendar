@@ -159,7 +159,9 @@
         }
 
         .cal-left div.holidays .holiday div {
-            margin-top: 7px;
+            margin: 7px;
+            margin-top: 13px;
+            min-height: 12px;
         }
 
         .cal-left div.holidays .holiday-name {
@@ -357,11 +359,18 @@
         <div class="holidays">
             <div class="holiday TODAY">
                 <span>TODAY 1/27/2016</span>
-                <span class="holiday-time">No Event</span>
+
+                <div>
+                    <span>No Event</span>
+                </div>
             </div>
             <div class="holiday">
                 <span>SUNDAY 2/7/2016</span>
 
+                <div>
+                    <span class="holiday-name">除夕</span>
+                    <span class="holiday-time">all-day</span>
+                </div>
                 <div>
                     <span class="holiday-name">除夕</span>
                     <span class="holiday-time">all-day</span>
@@ -565,7 +574,7 @@
 
             for (var i in Holidays) {
                 if (i.slice(0, 4) == today.getFullYear().toString()) {
-                    $("#" +  eval(i.slice(6)).toString() + month[i.slice(4, 6)] + i.slice(0, 4)).addClass('holiday')
+                    $("#" + eval(i.slice(6)).toString() + month[i.slice(4, 6)] + i.slice(0, 4)).addClass('holiday')
                 }
             }
             var todaySelect = $('#' + today.getDate() + today.toString().split(' ')[1] + today.getFullYear());
