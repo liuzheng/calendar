@@ -133,14 +133,15 @@
             color: #468dfe;
         }
 
-        .cal-left div.TODAY {
+        .cal-left div.TODAY * {
             color: #3f7ccd;
+            float: none !important;
         }
 
         .cal-left div.holidays {
             width: 280px;
             margin: 10px;
-            font-size: 9pt;
+            font-size: 10pt;
             color: #7f7f7f;
             overflow-y: scroll;
             top: 268px;
@@ -150,29 +151,37 @@
 
         .cal-left div.holidays .holiday {
             margin: 5px;
-            margin-top: 15px
+            width: 100%;
+            float: left;
         }
 
         .cal-left div.holidays .holiday span {
             margin-top: 5px;
             margin-bottom: 5px;
+            float: left;
         }
 
         .cal-left div.holidays .holiday div {
-            margin: 7px;
-            margin-top: 13px;
             min-height: 12px;
         }
 
         .cal-left div.holidays .holiday-name {
+            float: left;
+            width: 80%;
+        }
+
+        .cal-left div.holidays .holiday-name span {
             border-radius: 3px;
             background-color: lawngreen;
             padding: 5px;
             color: white;
+            float: left;
+            margin: 1px !important;
         }
 
         .cal-left div.holidays .holiday-time {
             float: right;
+            width: 20%;
         }
 
         .cal-right {
@@ -302,6 +311,7 @@
             position: relative;
             padding: 7px;
             right: -7px;
+            color: white;
         }
 
         .cal-right .calBig .holiday {
@@ -368,84 +378,47 @@
                 <span>SUNDAY 2/7/2016</span>
 
                 <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
+                    <div class="holiday-name"><span>除夕</span></div>
+                    <div class="holiday-time"><span>all-day</span></div>
                 </div>
                 <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
-                </div>
-            </div>
-            <div class="holiday">
-                <span>SUNDAY 2/7/2016</span>
-
-                <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
+                    <div class="holiday-name"><span>除夕</span></div>
+                    <div class="holiday-time"><span>all-day</span></div>
                 </div>
             </div>
             <div class="holiday">
                 <span>SUNDAY 2/7/2016</span>
 
                 <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
+                    <div class="holiday-name">
+
+                        <span>除aaa夕</span>
+                        <span>除夕</span>
+                        <span>除aa夕</span>
+                        <span>除aa夕</span>
+                        <span>除aa夕</span>
+                        <span>除aaa夕</span>
+                    </div>
+                    <div class="holiday-time">
+                        <span>all-day</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="holiday">
+                <span>SUNDAY 2/7/2016</span>
+
+                <div>
+                    <div class="holiday-name"><span>除夕</span></div>
+                    <div class="holiday-time"><span>all-day</span></div>
                 </div>
             </div>
             <div class="holiday">
                 <span>SUNDAY 2/7/2016</span>
 
                 <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
-                </div>
-            </div>
-            <div class="holiday">
-                <span>SUNDAY 2/7/2016</span>
-
-                <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
-                </div>
-            </div>
-            <div class="holiday">
-                <span>SUNDAY 2/7/2016</span>
-
-                <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
-                </div>
-            </div>
-            <div class="holiday">
-                <span>SUNDAY 2/7/2016</span>
-
-                <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
-                </div>
-            </div>
-            <div class="holiday">
-                <span>SUNDAY 2/7/2016</span>
-
-                <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
-                </div>
-            </div>
-            <div class="holiday">
-                <span>SUNDAY 2/7/2016</span>
-
-                <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
-                </div>
-            </div>
-            <div class="holiday">
-                <span>SUNDAY 2/7/2016</span>
-
-                <div>
-                    <span class="holiday-name">除夕</span>
-                    <span class="holiday-time">all-day</span>
+                    <div class="holiday-name"><span>除夕</span></div>
+                    <div class="holiday-time"><span>all-day</span></div>
                 </div>
             </div>
         </div>
@@ -502,6 +475,7 @@
         $.get('./holidays', function (e) {
 //        http://www.google.com/calendar/ical/zh_cn.china#holiday@group.v.calendar.google.com/public/basic.ics
 // make json shell :cat basic.ics | awk  -F: '{if($1=="SUMMARY") print "\""$2 ;else if($1=="DTSTART;VALUE=DATE") printf "\n\"%d\":",$2}'|sort -u|sed -e 's/\r/",/g'|awk '{if(NR==1) print "{"$0;else print $0}' > holidays && echo '"":""}' >> holidays
+            // https://p30-calendars.icloud.com/holidays/cn_zh.ics
             Holidays = JSON.parse(e);
             drawCalendar(now);
         });
