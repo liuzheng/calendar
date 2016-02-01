@@ -63,21 +63,19 @@ body {
     margin-top: 0;
     text-align: center;
     font-size: 10pt;
+    float: left;
 }
 
 .calSmall div {
     float: left;
     padding-top: 4px;
     padding-bottom: 2px;
-}
-
-.calSmall div div {
     width: 40px;
     height: 14px;
     color: #797979;
 }
 
-.calSmall div div.this-month {
+.calSmall div.this-month {
     color: white;
 }
 
@@ -277,7 +275,7 @@ body {
     padding-right: 7px;
 }
 
-.cal-right .calBig div div {
+.cal-right .calBig div {
     left: 3px;
     width: 74px;
     height: 64px;
@@ -289,13 +287,6 @@ body {
     padding: 10px;
 }
 
-.cal-right .calBig div div:first-child {
-    background-color: #f7f7f7
-}
-
-.cal-right .calBig div div:last-child {
-    background-color: #f7f7f7
-}
 
 .cal-right .calBig .today {
     background-color: #468dfe;
@@ -337,4 +328,8 @@ body {
 }
 .color-bg-a{
     background-color: #d2efc6;
+}
+
+.color-bg-gray {
+    background-color: #f7f7f7
 }
