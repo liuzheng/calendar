@@ -18,21 +18,19 @@
             <span class="this-month">{[{monthNames[selectDay.getMonth()]}]}</span>
             <span class="this-year">{[{selectDay.getFullYear()}]}</span>
             <span class="angle">
-                <i class="fa fa-angle-left past-month"></i>
-                <i class="fa fa-angle-right next-month"></i>
+                <i class="fa fa-angle-left past-month" ng-click="gotoPastMonth()"></i>
+                <i class="fa fa-angle-right next-month"  ng-click="gotoNextMonth()"></i>
             </span>
         </div>
         <div class="calSmall">
-                <div>SUN</div>
-                <div>MON</div>
-                <div>TUE</div>
-                <div>WED</div>
-                <div>THU</div>
-                <div>FRI</div>
-                <div>SAT</div>
-            <!--<div ng-repeat="day in selectMonth" ng-class="{true:'this-month',false:'' }[day.getMonth()==selectDay.getMonth()]"  >{[{day.getDate()}]}</div>-->
-            <div ng-repeat="day in selectMonth"  class="{[{day.class.join(' ')}]}"  >{[{day.getDate()}]}
-            </div>
+            <div>SUN</div>
+            <div>MON</div>
+            <div>TUE</div>
+            <div>WED</div>
+            <div>THU</div>
+            <div>FRI</div>
+            <div>SAT</div>
+            <div ng-repeat="day in selectMonth" class="{[{day.class.join(' ')}]}"  ng-click="showDay(day)">{[{day.getDate()}]}</div>
         </div>
         <div class="holidays">
             <div class="holiday TODAY">
@@ -75,9 +73,9 @@
     <div class="cal-right">
         <div class="topbar">
             <div class="today">
-                <span class="gray-background past-month"><</span>
-                <span class="gray-background Today">Today</span>
-                <span class="gray-background next-month">></span>
+                <span class="gray-background past-month" ng-click="gotoPastMonth()"><</span>
+                <span class="gray-background Today" ng-click="gotoToday()">Today</span>
+                <span class="gray-background next-month" ng-click="gotoNextMonth()">></span>
             </div>
             <div class="DWMY">
                 <span class="DAY">Day</span>
@@ -98,7 +96,11 @@
                 <div>SAT</div>
             </div>
             <div class="calBig">
-                <div ng-repeat="day in selectMonth" ng-class="{true:'color-bg-gray',false:''}[day.getDay()==0 || day.getDay()==6]"><span ng-class="{true:'today',false:''}[day.getDate()==today.getDate() && day.getMonth()==today.getMonth()]">{[{day.getDate()}]}</span></div>
+                <div ng-repeat="day in selectMonth"
+                     ng-class="{true:'color-bg-gray',false:''}[day.getDay()==0 || day.getDay()==6]"
+                     ng-click="showDay(day)"><span ng-class="{true:'',false:'hide'}[day.getDate()==1]">{[{day.toString().slice(4,8)}]}</span><span
+                        ng-class="{true:'today',false:''}[day.getDate()==today.getDate() && day.getMonth()==today.getMonth()]">{[{day.getDate()}]}</span>
+                </div>
             </div>
         </div>
     </div>
