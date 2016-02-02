@@ -36,7 +36,7 @@ var month = {
 var weeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 NgAPP.controller('calCtrl', function ($scope) {
     $scope.today = new Date();
-    $scope.monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    $scope.monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     $scope.selectDay = new Date();
     $scope.selectMonth = []
     $scope.drawCalendar = function (today) {
@@ -45,7 +45,18 @@ NgAPP.controller('calCtrl', function ($scope) {
         var firstMonthDay = new Date(todayNumber);
         var f = todayNumber - firstMonthDay.getDay() * 86400000;
         for (var i = 0; i < 42; i++) {
-            $scope.selectMonth.push(new Date(f + 86400000 * i))
+            var day = new Date(f + 86400000 * i);
+
+            day.class = [];
+            if (day.getMonth() == today.getMonth())day.class.push("this-month");
+            if (day.getMonth() == $scope.today.getMonth() && day.getDate() == $scope.today.getDate())
+                day.class.push("today");
+            if (day.getMonth() == today.getMonth() && day.getDate() == today.getDate())
+                day.class.push("day-selected");
+            if (day.getDate()<10)
+                day.class.push("single-day");
+
+            $scope.selectMonth.push(day)
         }
     };
     $scope.drawCalendar($scope.today);

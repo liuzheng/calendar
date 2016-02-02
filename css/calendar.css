@@ -71,7 +71,7 @@ body {
     padding-top: 4px;
     padding-bottom: 2px;
     width: 40px;
-    height: 14px;
+    height: 20px;
     color: #797979;
 }
 
@@ -87,7 +87,13 @@ body {
 }
 
 .day-selected {
-    color: white !important
+    color: white !important;
+    position: relative;
+    z-index: 30;
+}
+
+.day-selected.single-day:before {
+    margin-left: -10px;
 }
 
 .day-selected:before {
@@ -102,7 +108,7 @@ body {
     margin-top: -10px;
 }
 
-.calSmall div div.this-month.today.day-selected:before {
+.calSmall div.this-month.today.day-selected:before {
     background-color: #468dfe;
 }
 
@@ -117,11 +123,11 @@ body {
     margin-top: 12px;
 }
 
-.calSmall div div.this-month.today.day-selected {
+.calSmall div.this-month.today.day-selected {
     color: white;
 }
 
-.calSmall div div.this-month.today {
+.calSmall div.this-month.today {
     color: #468dfe;
 }
 
@@ -154,7 +160,7 @@ body {
 }
 
 /*. {*/
-    /*min-height: 12px;*/
+/*min-height: 12px;*/
 /*}*/
 
 .cal-left div.holidays .holiday-name {
@@ -287,15 +293,22 @@ body {
     padding: 10px;
 }
 
-
-.cal-right .calBig .today {
+.cal-right .calBig .today:before {
     background-color: #468dfe;
     border-radius: 15px;
-    content: "";
-    position: relative;
-    padding: 7px;
-    right: -7px;
+    content: " ";
+    position: absolute;
+    right: -9px;
+    top: -6px;
+    z-index: -1;
+    height: 30px;
+    width: 30px;
+}
+
+.cal-right .calBig .today {
     color: white;
+    position: relative;
+    z-index: 10;
 }
 
 .cal-right .calBig .holiday {
@@ -323,10 +336,11 @@ body {
 }
 
 /*colors*/
-.color-bg-A{
+.color-bg-A {
     background-color: lawngreen;
 }
-.color-bg-a{
+
+.color-bg-a {
     background-color: #d2efc6;
 }
 

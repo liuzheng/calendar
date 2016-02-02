@@ -30,7 +30,9 @@
                 <div>THU</div>
                 <div>FRI</div>
                 <div>SAT</div>
-            <div ng-repeat="day in selectMonth" ng-class="{true:'this-month',false:''}[day.getMonth()==selectDay.getMonth()]" >{[{day.getDate()}]}</div>
+            <!--<div ng-repeat="day in selectMonth" ng-class="{true:'this-month',false:'' }[day.getMonth()==selectDay.getMonth()]"  >{[{day.getDate()}]}</div>-->
+            <div ng-repeat="day in selectMonth"  class="{[{day.class.join(' ')}]}"  >{[{day.getDate()}]}
+            </div>
         </div>
         <div class="holidays">
             <div class="holiday TODAY">
