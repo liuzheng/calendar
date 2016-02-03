@@ -51,7 +51,7 @@ NgAPP.controller('calCtrl', function ($scope) {
 
             day.class = [];
             if (day.getMonth() == today.getMonth())day.class.push("this-month");
-            if (day.getMonth() == $scope.today.getMonth() && day.getDate() == $scope.today.getDate()) {
+            if (day.getMonth() == $scope.today.getMonth() && day.getDate() == $scope.today.getDate() && day.getFullYear() == $scope.today.getFullYear()) {
                 day.class.push("today");
                 day.today = true;
             }
