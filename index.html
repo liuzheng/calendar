@@ -15,8 +15,8 @@
         <input type="text" class="create-event"/>
 
         <div class="month-year">
-            <span class="this-month">{[{monthNames[selectDay.getMonth()]}]}</span>
-            <span class="this-year">{[{selectDay.getFullYear()}]}</span>
+            <span class="this-month" ng-bind="monthNames[selectDay.getMonth()]"></span>
+            <span class="this-year" ng-bind="selectDay.getFullYear()"></span>
             <span class="angle">
                 <i class="fa fa-angle-left past-month" ng-click="gotoPastMonth()"></i>
                 <i class="fa fa-angle-right next-month" ng-click="gotoNextMonth()"></i>
@@ -30,9 +30,8 @@
             <div>THU</div>
             <div>FRI</div>
             <div>SAT</div>
-            <div ng-repeat="day in selectMonth" class="{[{day.class.join(' ')}]}" ng-click="showDay(day)">
-                {[{day.getDate()}]}
-            </div>
+            <div ng-repeat="day in selectMonth" class="{[{day.class.join(' ')}]}" ng-click="showDay(day)"
+                 ng-bind="day.getDate()"></div>
         </div>
         <div class="holidays">
             <div class="holiday TODAY">
@@ -101,8 +100,8 @@
                 <div ng-repeat="day in selectMonth"
                      ng-class="{true:'color-bg-gray',false:''}[day.getDay()==0 || day.getDay()==6]"
                      ng-click="showDay(day)">
-                    <span ng-class="{true:'',false:'hide'}[day.getDate()==1]">{[{day.toString().slice(4,8)}]}</span>
-                    <span ng-class="{true:'today',false:''}[day.today]">{[{day.getDate()}]}</span>
+                    <span ng-class="{true:'',false:'hide'}[day.getDate()==1]" ng-bind="day.toString().slice(4,8)"></span>
+                    <span ng-class="{true:'today',false:''}[day.today]" ng-bind="day.getDate()"></span>
                 </div>
             </div>
         </div>

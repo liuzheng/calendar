@@ -3,10 +3,10 @@
  */
 'use strict';
 var NgAPP = angular.module('Calendar', []);
-NgAPP.config(function ($interpolateProvider) {
-    $interpolateProvider.startSymbol('{[{');
-    $interpolateProvider.endSymbol('}]}');
-});
+//NgAPP.config(function ($interpolateProvider) {
+//    $interpolateProvider.startSymbol('{[{');
+//    $interpolateProvider.endSymbol('}]}');
+//});
 NgAPP.directive('ngEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
