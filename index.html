@@ -29,7 +29,7 @@
             <div>THU</div>
             <div>FRI</div>
             <div>SAT</div>
-            <div ng-repeat="day in selectMonth" class="{[{day.class.join(' ')}]}" ng-click="showDay(day)"
+            <div ng-repeat="(k,day) in selectMonth" class="{[{day.class.join(' ')}]}" ng-click="showDay(day)"
                  ng-bind="day.getDate()"></div>
         </div>
         <div class="holidays">
@@ -52,15 +52,13 @@
                     <div class="holiday-time"><span>all-day</span></div>
                 </div>
             </div>
-            <div class="holiday">
-                <span>SUNDAY 2/7/2016</span>
+            <div class="holiday" ng-repeat="(k,day) in selectMonth" ng-class="{false:'hide'}[day.holidays.length>0]">
+                <span ng-bind="day.toDateString()"></span>
 
                 <div>
 
                     <div class="holiday-name">
-
-                        <span class="color-bg-A">除aaa夕</span>
-                        <span class="color-bg-A">除夕</span>
+                        <span class="color-bg-A" ng-bind="day.holidays"></span>
                     </div>
                     <div class="holiday-time">
                         <span>all-day</span>
@@ -96,7 +94,7 @@
                 <div>SAT</div>
             </div>
             <div class="calBig">
-                <div ng-repeat="day in selectMonth"
+                <div ng-repeat="(k,day) in selectMonth"
                      ng-class="{true:'color-bg-gray',false:''}[day.getDay()==0 || day.getDay()==6]"
                      ng-click="showDay(day)">
                     <span ng-class="{true:'',false:'hide'}[day.getDate()==1]" ng-bind="day.toString().slice(4,7)" style="padding-right: 7px;"></span>

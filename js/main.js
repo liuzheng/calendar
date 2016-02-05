@@ -33,14 +33,18 @@ var month = {
     '11': 'Nov',
     '12': 'Dec'
 };
-var weeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-NgAPP.controller('calCtrl', function ($scope) {
+NgAPP.controller('calCtrl', function ($scope, $http) {
+    $scope.weeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     $scope.today = new Date();
     $scope.monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    $http.get('holidays').success(function (data) {
+        $scope.holidays = data;
+        $scope.drawCalendar($scope.today);
+    });
 
     $scope.drawCalendar = function (today) {
         $scope.selectDay = today;
-        $scope.selectMonth = [];
+        $scope.selectMonth = {};
         var todayString = today.getFullYear() + '/' + eval(today.getMonth() + '+1').toString() + '/1';
         var todayNumber = Date.parse(todayString);
         var firstMonthDay = new Date(todayNumber);
@@ -70,10 +74,15 @@ NgAPP.controller('calCtrl', function ($scope) {
             if (day.getDate() < 10)
                 day.class.push("single-day");
             day.key = i;
-            $scope.selectMonth.push(day)
+            var dayid = day.toJSON().slice(0, 10).replace(/-/g, '');
+            try {
+                day.holidays=$scope.holidays[eval(dayid)];
+            } catch (e) {
+            }
+            $scope.selectMonth[dayid] = day
         }
     };
-    $scope.drawCalendar($scope.today);
+
     $scope.showDay = function (day) {
         $scope.drawCalendar(day);
     };
@@ -97,6 +106,6 @@ NgAPP.controller('calCtrl', function ($scope) {
             goto = new Date(Date.parse($scope.selectDay.getFullYear() + '/' + eval($scope.selectDay.getMonth() + '+2').toString() + '/1'))
         }
         $scope.drawCalendar(goto)
-    }
+    };
 })
 
