@@ -99,8 +99,8 @@
                 <div ng-repeat="day in selectMonth"
                      ng-class="{true:'color-bg-gray',false:''}[day.getDay()==0 || day.getDay()==6]"
                      ng-click="showDay(day)">
-                    <span ng-class="{true:'',false:'hide'}[day.getDate()==1]" ng-bind="day.toString().slice(4,8)"></span>
-                    <span ng-class="{true:'today',false:''}[day.today]" ng-bind="day.getDate()"></span>
+                    <span ng-class="{true:'',false:'hide'}[day.getDate()==1]" ng-bind="day.toString().slice(4,7)" style="padding-right: 7px;"></span>
+                    <span class="{[{day.class.join(' ')}]}" ng-bind="day.getDate()"></span>
                 </div>
             </div>
         </div>
